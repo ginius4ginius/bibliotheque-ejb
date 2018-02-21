@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * The persistent class for the adherent database table.
- * 
+ * petit test
  */
 @Entity
 @NamedQuery(name="Adherent.findAll", query="SELECT a FROM Adherent a")
