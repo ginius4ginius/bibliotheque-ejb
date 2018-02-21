@@ -47,7 +47,6 @@ public class Auteur implements Serializable {
 
 	public short getNum() {
 		return this.num;
-		//System.out.println("mon nom est vincent et je suis le meilleur");
 	}
 
 	public void setNum(short num) {
