@@ -81,6 +81,7 @@ public class Adherent implements Serializable {
 	public void setAdrVille(String adrVille) {
 		this.adrVille = adrVille;
 		System.out.println("Git est génial!!!");
+		System.out.println("c'est plus si sur");
 	}
 
 	public String getMel() {
