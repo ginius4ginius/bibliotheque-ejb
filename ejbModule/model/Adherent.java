@@ -113,6 +113,7 @@ public class Adherent implements Serializable {
 
 	public void setTel(String tel) {
 		this.tel = tel;
+		System.out.println("Numéro de tel  au format: 07xxxxxxxx");
 	}
 
 	public List<Pret> getPrets() {
