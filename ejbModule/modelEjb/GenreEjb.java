@@ -106,7 +106,7 @@ public class GenreEjb
      * @return
      */
     public List<Livre> getAllLivreByGenre(Genre genre){
-    	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.genre LIKE :genre")
+    	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.genre.libelle LIKE :genre")
 				.setParameter("genre", genre.getLibelle()).getResultList();
 		return liste;
     }

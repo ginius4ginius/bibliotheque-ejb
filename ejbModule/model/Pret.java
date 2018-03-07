@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -39,10 +41,13 @@ public class Pret implements Serializable {
 	public Pret() {
 	}
 
-	public Pret(Date datePret, Date dateRetourPrevue, Date dateRetourReelle) {
+	public Pret(Date datePret) {
+		LocalDate dateRetour = LocalDate.now().plusWeeks(3);
+		Date date = new Date(24 * 3600 * 1000 * dateRetour.toEpochDay());
 		this.datePret = datePret;
-		this.dateRetourPrevue = dateRetourPrevue;
-		this.dateRetourReelle = dateRetourReelle;
+		this.dateRetourPrevue = date;
+				
+				
 	}
 
 	public short getNum() {
