@@ -90,6 +90,17 @@ public class GenreEjb
     }
     
     /**
+     * fonction pour rechercher si le genre exsiste.
+     * @param g
+     * @return
+     */
+    public List<Genre> rechercheUnGenre(Genre genre) {
+		List<Genre> liste = em.createQuery("SELECT x FROM Genre x WHERE x.libelle LIKE :name")
+				.setParameter("name", genre.getLibelle()).getResultList();
+		return liste;
+	}
+    
+    /**
      * fonction pour afficher tous les livre par la paramètre genre donné.
      * @param genre
      * @return
