@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Genre;
+import model.Livre;
 
 
 /**
@@ -86,6 +87,17 @@ public class GenreEjb
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     public List<Genre> getGenreFindAll() {
         return em.createNamedQuery("Genre.findAll").getResultList();
+    }
+    
+    /**
+     * fonction pour afficher tous les livre par la paramètre genre donné.
+     * @param genre
+     * @return
+     */
+    public List<Livre> getAllLivreByGenre(Genre genre){
+    	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.genre LIKE :genre")
+				.setParameter("genre", genre.getLibelle()).getResultList();
+		return liste;
     }
 
 }

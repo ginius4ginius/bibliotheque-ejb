@@ -3,6 +3,7 @@ package modelEjb;
 import java.util.List;
 import javax.ejb.Local;
 import model.Genre;
+import model.Livre;
 
 
 /**
@@ -36,5 +37,7 @@ public interface GenreEjbLocal
      * @generated DT_ID=none
      */
     public List<Genre> getGenreFindAll();
+    
+    public List<Livre> getAllLivreByGenre(Genre genre);
 
 }

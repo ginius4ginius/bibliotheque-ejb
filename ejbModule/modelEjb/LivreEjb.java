@@ -88,10 +88,20 @@ public class LivreEjb
         return em.createNamedQuery("Livre.findAll").getResultList();
     }
     
-    public List<Livre> rechercheUnLivre(Livre l) {
-		List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.ISBN LIKE :num ")
-				.setParameter("num", l.getIsbn()).getResultList();
-		return liste;
+    /**
+     * fonction qui recherche un livre dans la liste des livre et 
+     * @return 
+     */
+    public boolean rechercheUnLivre(Livre l) {
+    	boolean result = true;
+		List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.isbn LIKE :num ").setParameter("num", l.getIsbn()).getResultList();
+		
+
+		if (liste.size() == 0) {
+			result = false;
+		}
+
+		return result;
 	}
 
 }
