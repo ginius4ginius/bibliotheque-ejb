@@ -88,5 +88,36 @@ public class AdherentEjb
     public List<Adherent> getAdherentFindAll() {
         return em.createNamedQuery("Adherent.findAll").getResultList();
     }
+    
+    
+    public boolean rechercherAdherent(Adherent adh) {
+    	boolean result = false;
+    	List<Adherent> listeAdh = em.createQuery("SELECT x FROM Adherent x WHERE x.num LIKE :num AND x.nom LIKE :nom AND x.prenom LIKE :prenom").setParameter("num", adh.getNum()).setParameter("nom", adh.getNom()).setParameter("prenom", adh.getPrenom()).getResultList();
+    	if(listeAdh.size()>0) {
+    		System.out.println("adhérent(s) trouvé(s)");
+    		result = true;
+    	}
+    	return result;
+    }
+    
+    public boolean modifierAdherentAdresse(Adherent adh, String adrRue, int adrCP, String adrVille) {
+    	if (rechercherAdherent(adh)==true) {
+    		//em.getTransaction().begin();
+    		String sql = "UPDATE Adherent AS x SET " + 
+    					 "adrRue = :rue" + 
+    					 "adrCP = :CP" +
+    					 "adrVille = :ville" +
+    					 "WHERE id = :adhId";
+    		Query qr = em.createQuery(sql).setParameter("rue", adrRue)
+    									  .setParameter("CP", adrCP)
+    									  .setParameter("ville", adrVille)
+    									  .setParameter("adhId", adh.getNum());
+    		qr.executeUpdate();
+    		
+    		
+    		//em.getTransaction().commit();	
+    	}
+    	return true;			   					   	 										
+    }
 
 }
