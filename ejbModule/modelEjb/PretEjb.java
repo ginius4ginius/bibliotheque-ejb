@@ -137,6 +137,7 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 		if (listePret.size() < 3) {
 			result = true;
 		}
+		
 		if (listeLivreEmprunte.size() == 0) {
 			result = true;
 		}
