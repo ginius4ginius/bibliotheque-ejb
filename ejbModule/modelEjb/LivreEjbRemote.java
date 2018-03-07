@@ -36,5 +36,7 @@ public interface LivreEjbRemote
      * @generated DT_ID=none
      */
     public List<Livre> getLivreFindAll();
+    
+    public List<Livre> rechercheUnLivre(Livre l);
 
 }

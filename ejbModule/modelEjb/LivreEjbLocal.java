@@ -36,5 +36,7 @@ public interface LivreEjbLocal
      * @generated DT_ID=none
      */
     public List<Livre> getLivreFindAll();
+    
+    public List<Livre> rechercheUnLivre(Livre l);
 
 }
