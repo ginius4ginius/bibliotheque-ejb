@@ -102,7 +102,7 @@ public class AdherentEjb
     
     public boolean modifierAdherentAdresse(Adherent adh, String adrRue, int adrCP, String adrVille) {
     	if (rechercherAdherent(adh)==true) {
-    		//em.getTransaction().begin();
+    		em.getTransaction().begin();
     		String sql = "UPDATE Adherent AS x SET " + 
     					 "adrRue = :rue" + 
     					 "adrCP = :CP" +
@@ -115,7 +115,7 @@ public class AdherentEjb
     		qr.executeUpdate();
     		
     		
-    		//em.getTransaction().commit();	
+    		em.getTransaction().commit();	
     	}
     	return true;			   					   	 										
     }
