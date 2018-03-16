@@ -52,7 +52,7 @@ public class Livre implements Serializable {
 	
 	
 
-	public Livre(String isbn, String titre, String langue, float prix, short annee) {
+	public Livre(String isbn, String titre, String langue, float prix, short annee, Auteur auteur, Genre genre, Editeur editeur ) {
 		super();
 		this.annee = annee;
 		this.isbn = isbn;

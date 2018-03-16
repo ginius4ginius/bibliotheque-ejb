@@ -38,7 +38,7 @@ public interface GenreEjbLocal
      */
     public List<Genre> getGenreFindAll();
     
-    public List<Genre> rechercheUnGenre(Genre genre);
+    public boolean rechercheUnGenre(Genre genre);
     
     public List<Livre> getAllLivreByGenre(Genre genre);
 

@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import model.Adherent;
-import model.Genre;
 import model.Livre;
 import model.Pret;
 
@@ -89,10 +88,17 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 	/**
 	 * Fonction retournant une liste d'une donnée ou vide .
 	 */
-	public List<Pret> rechercheUnPret(Pret pret) {
-		List<Pret> liste = em.createQuery("SELECT x FROM Pret x WHERE x.datePret LIKE :date")
-				.setParameter("date", pret.getDatePret()).getResultList();
-		return liste;
+	public boolean rechercheUnPret(Pret pret) {
+		boolean result = true;
+		Pret p = em.find(Pret.class, pret.getNum());
+		//List<Pret> liste = em.createQuery("SELECT x FROM Pret x WHERE x.datePret LIKE :date")
+		//.setParameter("date", pret.getDatePret()).getResultList();
+		if (p.getNum()==0 ) {
+			result = false;
+		}
+
+		return result;
+		
 	}
 
 	/**

@@ -40,7 +40,7 @@ public interface PretEjbLocal
      */
     public List<Pret> getPretFindAll();
     
-    public List<Pret> rechercheUnPret(Pret pret);
+    public boolean rechercheUnPret(Pret pret);
     
     public boolean ifIsDisponible(Livre l);
     

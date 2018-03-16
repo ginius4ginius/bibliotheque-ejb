@@ -9,6 +9,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 import model.Genre;
 import model.Livre;
 
@@ -94,10 +95,18 @@ public class GenreEjb
      * @param g
      * @return
      */
-    public List<Genre> rechercheUnGenre(Genre genre) {
-		List<Genre> liste = em.createQuery("SELECT x FROM Genre x WHERE x.libelle LIKE :name")
-				.setParameter("name", genre.getLibelle()).getResultList();
-		return liste;
+    public boolean rechercheUnGenre(Genre genre) {
+    	boolean result = true;
+    	Genre g = em.find(Genre.class, genre.getNum());
+		//List<Genre> liste = em.createQuery("SELECT x FROM Genre x WHERE x.libelle LIKE :name")
+		//.setParameter("name", genre.getLibelle()).getResultList();
+    	
+		if (g.getNum()==0) {
+			result = false;
+		}
+
+		return result;
+
 	}
     
     /**

@@ -9,6 +9,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 import model.Livre;
 
 
@@ -92,12 +93,13 @@ public class LivreEjb
      * fonction qui recherche un livre dans la liste des livre et 
      * @return 
      */
-    public boolean rechercheUnLivre(Livre l) {
+    public boolean rechercheUnLivre(Livre livre) {
     	boolean result = true;
-		List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.isbn LIKE :num ").setParameter("num", l.getIsbn()).getResultList();
-		
-
-		if (liste.size() == 0) {
+    	Livre l = em.find(Livre.class, livre.getNum() );
+    	//	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.isbn LIKE :num ")
+		//	.setParameter("num", l.getIsbn()).getResultList();
+    	
+		if (l.getNum() == 0) {
 			result = false;
 		}
 

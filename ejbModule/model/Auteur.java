@@ -24,7 +24,7 @@ public class Auteur implements Serializable {
 
 	private String prenom;
 
-	private byte prixNobel;
+	private int prixNobel;
 
 	//bi-directional many-to-one association to Livre
 	@OneToMany(mappedBy="auteur")
@@ -35,12 +35,12 @@ public class Auteur implements Serializable {
 	
 	
 
-	public Auteur(String nom, String prenom, String nationalite, byte prixNobel) {
+	public Auteur(String nom, String prenom, String nationalite, int i) {
 		super();
 		this.nationalite = nationalite;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.prixNobel = prixNobel;
+		this.prixNobel = i;
 	}
 
 
@@ -77,7 +77,7 @@ public class Auteur implements Serializable {
 		this.prenom = prenom;
 	}
 
-	public byte getPrixNobel() {
+	public int getPrixNobel() {
 		return this.prixNobel;
 	}
 
