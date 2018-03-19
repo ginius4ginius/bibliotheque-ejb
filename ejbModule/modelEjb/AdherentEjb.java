@@ -9,6 +9,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import model.Adherent;
 
@@ -59,6 +60,7 @@ public class AdherentEjb
     }
 
     /**
+     * ajouter un adhérent dans la bdd
      * @generated DT_ID=none
      */
     public Adherent persistAdherent(Adherent adherent) {
@@ -74,6 +76,7 @@ public class AdherentEjb
     }
 
     /**
+     * supprimer un adhérent
      * @generated DT_ID=none
      */
     public void removeAdherent(Adherent adherent) {
@@ -89,18 +92,37 @@ public class AdherentEjb
         return em.createNamedQuery("Adherent.findAll").getResultList();
     }
     
-    
+    /***
+     * rechercher un Adhérent  à partir son num, nom & prénom
+     * @param adh
+     * @return
+     */
     public boolean rechercherAdherent(Adherent adh) {
     	boolean result = false;
-    	List<Adherent> listeAdh = em.createQuery("SELECT x FROM Adherent x WHERE x.num LIKE :num AND x.nom LIKE :nom AND x.prenom LIKE :prenom").setParameter("num", adh.getNum()).setParameter("nom", adh.getNom()).setParameter("prenom", adh.getPrenom()).getResultList();
-    	if(listeAdh.size()>0) {
-    		System.out.println("adhérent(s) trouvé(s)");
+    	TypedQuery<Adherent> query = em.createQuery("SELECT x FROM Adherent x WHERE x.num LIKE :num AND x.nom LIKE :nom AND x.prenom LIKE :prenom", Adherent.class);
+    	List<Adherent> listeAdh = query.setParameter("num", adh.getNum())
+    								.setParameter("nom", adh.getNom())
+    								.setParameter("prenom", adh.getPrenom()).getResultList();
+    	
+    	
+    	if((listeAdh.size() !=0)) {
+    		System.out.println("adhérent trouvé");
     		result = true;
     	}
     	return result;
     }
     
-    public boolean modifierAdherentAdresse(Adherent adh, String adrRue, int adrCP, String adrVille) {
+    
+    
+    /***
+     * Fonction qui modifier l'adresse d'un ahérent utilisqnt UPDATE query
+     * @param adh
+     * @param adrRue
+     * @param adrCP
+     * @param adrVille
+     * @return
+     */
+    public boolean updateAdherentAdr(Adherent adh, String adrRue, int adrCP, String adrVille) {
     	if (rechercherAdherent(adh)==true) {
     		em.getTransaction().begin();
     		String sql = "UPDATE Adherent AS x SET " + 
@@ -118,6 +140,23 @@ public class AdherentEjb
     		em.getTransaction().commit();	
     	}
     	return true;			   					   	 										
+    }
+    
+    /// Modifier del'adresse d'Adhérent utilisant find & merge
+    
+    public boolean modifierAdherentAdr(Adherent adh, String adrRue, int adrCP, String adrVille) {
+    	boolean change = false;
+    	adh = em.find(Adherent.class, adh.getNum());
+    	if(adh != null) {
+	    	adh.setAdrRue(adrRue);
+	    	adh.setAdrCP(adrCP);
+	    	adh.setAdrVille(adrVille);
+	    	em.getTransaction().begin();
+	    	em.merge(adh);
+	    	em.getTransaction().commit();
+	    	change = true;
+    	}	
+	    	return change;
     }
 
 }

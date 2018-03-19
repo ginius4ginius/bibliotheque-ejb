@@ -88,5 +88,9 @@ public class AuteurEjb
     public List<Auteur> getAuteurFindAll() {
         return em.createNamedQuery("Auteur.findAll").getResultList();
     }
+    
+    
+    
+    
 
 }
