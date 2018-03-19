@@ -123,6 +123,7 @@ public class AdherentEjb
      * @return
      */
     public boolean updateAdherentAdr(Adherent adh, String adrRue, int adrCP, String adrVille) {
+    	
     	if (rechercherAdherent(adh)==true) {
     		em.getTransaction().begin();
     		String sql = "UPDATE Adherent AS x SET " + 
