@@ -37,5 +37,7 @@ public interface AuteurEjbRemote
      * @generated DT_ID=none
      */
     public List<Auteur> getAuteurFindAll();
+    
+    public boolean rechercherUnAuteur(Auteur auteur);
 
 }

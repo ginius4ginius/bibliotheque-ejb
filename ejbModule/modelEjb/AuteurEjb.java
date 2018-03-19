@@ -89,6 +89,20 @@ public class AuteurEjb
         return em.createNamedQuery("Auteur.findAll").getResultList();
     }
     
+    /**
+     * rechercher un Auteur
+     * @param a
+     * @return
+     */
+    public boolean rechercherUnAuteur(Auteur auteur) {
+    	boolean result = false;
+    	auteur = em.find(Auteur.class, auteur.getNum());
+    	 if(auteur != null)
+    		 result = true;
+    	 return result;
+    	   	
+    }
+    
     
     
     

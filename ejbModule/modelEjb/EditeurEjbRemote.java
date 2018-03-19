@@ -36,5 +36,7 @@ public interface EditeurEjbRemote
      * @generated DT_ID=none
      */
     public List<Editeur> getEditeurFindAll();
+    
+    public boolean rechercherUnEditeur(Editeur editeur);
 
 }

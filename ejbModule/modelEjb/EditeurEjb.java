@@ -9,6 +9,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import model.Auteur;
 import model.Editeur;
 
 
@@ -87,5 +89,20 @@ public class EditeurEjb
     public List<Editeur> getEditeurFindAll() {
         return em.createNamedQuery("Editeur.findAll").getResultList();
     }
+    
+    /**
+     * rechercher un éditeur
+     * @param editeur
+     * @return
+     */
+    public boolean rechercherUnEditeur(Editeur editeur) {
+    	boolean result = false;
+    	editeur = em.find(Editeur.class, editeur.getNum());
+    	 if(editeur != null)
+    		 result = true;
+    	 return result;
+   	   	
+    }
+    
 
 }

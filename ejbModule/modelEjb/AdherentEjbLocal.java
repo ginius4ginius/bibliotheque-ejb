@@ -37,5 +37,11 @@ public interface AdherentEjbLocal
      * @generated DT_ID=none
      */
     public List<Adherent> getAdherentFindAll();
+    
+    public boolean rechercherAdherent(Adherent adh);
+    
+    public boolean updateAdherentAdr(Adherent adh, String adrRue, int adrCP, String adrVille);
+    
+    public boolean modifierAdherentAdr(Adherent adh, String adrRue, int adrCP, String adrVille);
 
 }
