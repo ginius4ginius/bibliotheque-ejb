@@ -59,6 +59,9 @@ public class Livre implements Serializable {
 		this.langue = langue;
 		this.prix = prix;
 		this.titre = titre;
+		this.genre = genre;
+		this.auteur = auteur;
+		this.editeur = editeur;
 	}
 
 
