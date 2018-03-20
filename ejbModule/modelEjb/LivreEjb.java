@@ -1,6 +1,7 @@
 package modelEjb;
 
 import java.util.List;
+
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
@@ -10,6 +11,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import model.Auteur;
+import model.Editeur;
+import model.Genre;
 import model.Livre;
 
 
@@ -104,5 +108,33 @@ public class LivreEjb
 
 		return result;
 	}
+    
+    public List<Livre> getLivreFindAuteur(Auteur auteur) {
+    	
+    	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.auteur LIKE :num ")
+    				.setParameter("num", auteur.getNum()).getResultList();
+    	
+    	return liste;
+    			
+    }
+    
+ public List<Livre> getLivreFindGenre(Genre genre) {
+    	
+    	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.genre LIKE :num ")
+    				.setParameter("num", genre.getNum()).getResultList();
+    	
+    	return liste;
+    			
+    }
+ 
+ public List<Livre> getLivreFindEditeur(Editeur editeur) {
+ 	
+ 	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.editeur LIKE :num ")
+ 				.setParameter("num", editeur.getNum()).getResultList();
+ 	
+ 	return liste;
+ 			
+ }
+    
 
 }

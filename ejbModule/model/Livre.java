@@ -65,6 +65,7 @@ public class Livre implements Serializable {
 		this.langue = langue;
 		this.prix = prix;
 		this.titre = titre;
+<<<<<<< HEAD
 		this.numAuteur=NumAuteur;
 		auteur.setNum(numAuteur);
 		
@@ -73,6 +74,11 @@ public class Livre implements Serializable {
 		
 		this.numGenre=NumGenre;
 		genre.setNum(numGenre);
+=======
+		this.genre = genre;
+		this.auteur = auteur;
+		this.editeur = editeur;
+>>>>>>> branch 'master' of https://github.com/ginius4ginius/bibliotheque-ejb.git
 	}
 
 
