@@ -16,7 +16,7 @@ public class Auteur implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private short num;
+	private int num;
 
 	private String nationalite;
 
@@ -45,12 +45,12 @@ public class Auteur implements Serializable {
 
 
 
-	public short getNum() {
+	public int getNum() {
 		return this.num;
 	}
 
-	public void setNum(short num) {
-		this.num = num;
+	public void setNum(int numAuteur) {
+		this.num = numAuteur;
 	}
 
 	public String getNationalite() {

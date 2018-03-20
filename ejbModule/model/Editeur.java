@@ -16,7 +16,7 @@ public class Editeur implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private short num;
+	private int num;
 
 	private String adrCP;
 
@@ -45,12 +45,12 @@ public class Editeur implements Serializable {
 
 
 
-	public short getNum() {
+	public int getNum() {
 		return this.num;
 	}
 
-	public void setNum(short num) {
-		this.num = num;
+	public void setNum(int numEditeur) {
+		this.num = numEditeur;
 	}
 
 	public String getAdrCP() {

@@ -99,9 +99,8 @@ public class AdherentEjb
      */
     public boolean rechercherAdherent(Adherent adh) {
     	boolean result = false;
-    	TypedQuery<Adherent> query = em.createQuery("SELECT x FROM Adherent x WHERE x.num LIKE :num AND x.nom LIKE :nom AND x.prenom LIKE :prenom", Adherent.class);
-    	List<Adherent> listeAdh = query.setParameter("num", adh.getNum())
-    								.setParameter("nom", adh.getNom())
+    	TypedQuery<Adherent> query = em.createQuery("SELECT x FROM Adherent x WHERE x.nom LIKE :nom AND x.prenom LIKE :prenom", Adherent.class);
+    	List<Adherent> listeAdh = query.setParameter("nom", adh.getNom())
     								.setParameter("prenom", adh.getPrenom()).getResultList();
     	
     	

@@ -9,7 +9,9 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
+import model.Adherent;
 import model.Auteur;
 
 
@@ -95,11 +97,18 @@ public class AuteurEjb
      * @return
      */
     public boolean rechercherUnAuteur(Auteur auteur) {
+    	//auteur = em.find(Auteur.class, auteur.getNum());
     	boolean result = false;
-    	auteur = em.find(Auteur.class, auteur.getNum());
-    	 if(auteur != null)
-    		 result = true;
-    	 return result;
+    	TypedQuery<Auteur> query = em.createQuery("SELECT x FROM Auteur x WHERE x.nom LIKE :nom AND x.prenom LIKE :prenom", Auteur.class);
+    	List<Auteur> listeAuteur = query.setParameter("nom", auteur.getNom())
+    								.setParameter("prenom", auteur.getPrenom()).getResultList();
+    	
+
+    	if((listeAuteur.size() !=0)) {
+    		System.out.println("auteur trouvé");
+    		result = true;
+    	}
+    	return result;
     	   	
     }
     

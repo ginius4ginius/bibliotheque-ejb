@@ -13,12 +13,16 @@ import java.util.List;
 @NamedQuery(name="Livre.findAll", query="SELECT l FROM Livre l")
 public class Livre implements Serializable {
 	private static final long serialVersionUID = 1L;
+	private int numAuteur;
+	private int numGenre;
+	private int numEditeur;
+	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private short num;
 
-	private short annee;
+	private int annee;
 
 	private String isbn;
 
@@ -52,18 +56,28 @@ public class Livre implements Serializable {
 	
 	
 
-	public Livre(String isbn, String titre, String langue, float prix, short annee, Auteur auteur, Genre genre, Editeur editeur ) {
+	public Livre(String isbn, String titre, String langue, float prix, int i, int NumAuteur, int NumGenre, int NumEditeur ) {
 		super();
-		this.annee = annee;
+		
+		
+		this.annee = i;
 		this.isbn = isbn;
 		this.langue = langue;
 		this.prix = prix;
 		this.titre = titre;
+		this.numAuteur=NumAuteur;
+		auteur.setNum(numAuteur);
+		
+		this.numEditeur=NumEditeur;
+		editeur.setNum(numEditeur);
+		
+		this.numGenre=NumGenre;
+		genre.setNum(numGenre);
 	}
 
 
 
-	public short getNum() {
+	public int getNum() {
 		return this.num;
 	}
 
@@ -71,7 +85,7 @@ public class Livre implements Serializable {
 		this.num = num;
 	}
 
-	public short getAnnee() {
+	public int getAnnee() {
 		return this.annee;
 	}
 

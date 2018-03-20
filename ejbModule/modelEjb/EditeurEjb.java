@@ -9,6 +9,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import model.Auteur;
 import model.Editeur;
@@ -95,13 +96,19 @@ public class EditeurEjb
      * @param editeur
      * @return
      */
-    public boolean rechercherUnEditeur(Editeur editeur) {
+    public boolean rechercherUnEditeur(Editeur edit) {
+    	//auteur = em.find(Auteur.class, auteur.getNum());
     	boolean result = false;
-    	editeur = em.find(Editeur.class, editeur.getNum());
-    	 if(editeur != null)
-    		 result = true;
-    	 return result;
-   	   	
+    	TypedQuery<Editeur> query = em.createQuery("SELECT x FROM Editeur x WHERE x.nom LIKE :nom", Editeur.class);
+    	List<Editeur> listeEditeur = query.setParameter("nom", edit.getNom()).getResultList();
+    	
+
+    	if((listeEditeur.size() !=0)) {
+    		System.out.println("editeur trouvé");
+    		result = true;
+    	}
+    	return result;
+    	   	
     }
     
 

@@ -94,13 +94,12 @@ public class LivreEjb
      * @return 
      */
     public boolean rechercheUnLivre(Livre livre) {
-    	boolean result = true;
-    	Livre l = em.find(Livre.class, livre.getNum() );
-    	//	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.isbn LIKE :num ")
-		//	.setParameter("num", l.getIsbn()).getResultList();
+    	boolean result = false;
+    		List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.isbn LIKE :num ")
+			.setParameter("num", livre.getIsbn()).getResultList();
     	
-		if (l.getNum() == 0) {
-			result = false;
+		if (liste.size() != 0) {
+			result = true;
 		}
 
 		return result;

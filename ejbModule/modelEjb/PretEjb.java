@@ -89,12 +89,11 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 	 * Fonction retournant une liste d'une donnée ou vide .
 	 */
 	public boolean rechercheUnPret(Pret pret) {
-		boolean result = true;
-		Pret p = em.find(Pret.class, pret.getNum());
-		//List<Pret> liste = em.createQuery("SELECT x FROM Pret x WHERE x.datePret LIKE :date")
-		//.setParameter("date", pret.getDatePret()).getResultList();
-		if (p.getNum()==0 ) {
-			result = false;
+		boolean result = false;
+		List<Pret> liste = em.createQuery("SELECT x FROM Pret x WHERE x.datePret LIKE :date")
+		.setParameter("date", pret.getDatePret()).getResultList();
+		if (liste.size()!=0 ) {
+			result = true;
 		}
 
 		return result;

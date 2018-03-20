@@ -16,7 +16,7 @@ public class Genre implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private byte num;
+	private int num;
 
 	private String libelle;
 
@@ -34,12 +34,12 @@ public class Genre implements Serializable {
 
 
 
-	public byte getNum() {
+	public int getNum() {
 		return this.num;
 	}
 
-	public void setNum(byte num) {
-		this.num = num;
+	public void setNum(int numGenre) {
+		this.num = numGenre;
 	}
 
 	public String getLibelle() {

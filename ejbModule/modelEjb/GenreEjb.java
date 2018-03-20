@@ -101,7 +101,7 @@ public class GenreEjb
 		List<Genre> liste = em.createQuery("SELECT x FROM Genre x WHERE x.libelle LIKE :name")
 		.setParameter("name", genre.getLibelle()).getResultList();
     	
-		if (liste.size()==0) {
+		if (liste.size()!=0) {
 			result = true;
 		}
 
