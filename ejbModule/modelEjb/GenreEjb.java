@@ -96,13 +96,13 @@ public class GenreEjb
      * @return
      */
     public boolean rechercheUnGenre(Genre genre) {
-    	boolean result = true;
-    	Genre g = em.find(Genre.class, genre.getNum());
-		//List<Genre> liste = em.createQuery("SELECT x FROM Genre x WHERE x.libelle LIKE :name")
-		//.setParameter("name", genre.getLibelle()).getResultList();
+    	boolean result = false;
     	
-		if (g.getNum()==0) {
-			result = false;
+		List<Genre> liste = em.createQuery("SELECT x FROM Genre x WHERE x.libelle LIKE :name")
+		.setParameter("name", genre.getLibelle()).getResultList();
+    	
+		if (liste.size()==0) {
+			result = true;
 		}
 
 		return result;

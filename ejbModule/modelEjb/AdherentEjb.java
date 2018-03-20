@@ -143,7 +143,7 @@ public class AdherentEjb
     	return true;			   					   	 										
     }
     
-    /// Modifier del'adresse d'Adhérent utilisant find & merge
+    /// Modifier de l'adresse d'Adhérent utilisant find & merge
     
     public boolean modifierAdherentAdr(Adherent adh, String adrRue, int adrCP, String adrVille) {
     	boolean change = false;
