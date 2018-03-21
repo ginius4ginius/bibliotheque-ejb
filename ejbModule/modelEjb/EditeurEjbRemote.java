@@ -38,5 +38,7 @@ public interface EditeurEjbRemote
     public List<Editeur> getEditeurFindAll();
     
     public boolean rechercherUnEditeur(Editeur editeur);
+    
+    public boolean ifExist(Editeur edit);
 
 }

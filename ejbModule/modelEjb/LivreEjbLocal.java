@@ -38,5 +38,7 @@ public interface LivreEjbLocal
     public List<Livre> getLivreFindAll();
     
     public boolean rechercheUnLivre(Livre l);
+    
+    public Livre rechercheUnLivreId(Livre livre);
 
 }

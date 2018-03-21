@@ -53,5 +53,7 @@ public interface PretEjbLocal
     public List<Pret> rechercheAllPret();
     
     public List <Pret> listePretNomrendu();
+    
+    public Pret rechercheUnPretId(Pret pret);
 
 }

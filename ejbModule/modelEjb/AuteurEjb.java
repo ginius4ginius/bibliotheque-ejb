@@ -112,6 +112,31 @@ public class AuteurEjb
     	   	
     }
     
+    /**
+     * Rechercher Id d'un auteur persisté
+     * @param auteur
+     * @return
+     */
+    public Auteur rechercherUnAuteurId(Auteur auteur) {
+    	//auteur = em.find(Auteur.class, auteur.getNum());
+    	Auteur unAuteur = null;
+    	TypedQuery<Auteur> query = em.createQuery("SELECT x FROM Auteur x WHERE x.nom LIKE :nom AND x.prenom LIKE :prenom", Auteur.class);
+    	List<Auteur> listeAuteur = query.setParameter("nom", auteur.getNom())
+    								.setParameter("prenom", auteur.getPrenom()).getResultList();
+    	
+
+    	if((listeAuteur.size() !=0)) {
+    		unAuteur = listeAuteur.get(0);
+    	}
+    	return unAuteur;
+    	   	
+    }
+    
+    public boolean ifExist(Auteur auteur) {
+    	if (rechercherUnAuteur(auteur))
+    		return true;
+    	return false;
+    }
     
     
     

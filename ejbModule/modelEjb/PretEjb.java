@@ -99,6 +99,19 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 		return result;
 		
 	}
+	
+	
+	public Pret rechercheUnPretId(Pret pret) {
+		Pret pretResult = null;
+		List<Pret> liste = em.createQuery("SELECT x FROM Pret x WHERE x.datePret LIKE :date")
+		.setParameter("date", pret.getDatePret()).getResultList();
+		if (liste.size()!=0 ) {
+			pretResult = liste.get(0);
+		}
+
+		return pretResult;
+		
+	}
 
 	/**
 	 * fonction permettant de voir si un livre est emprunté.

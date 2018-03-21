@@ -43,5 +43,9 @@ public interface AdherentEjbLocal
     public boolean updateAdherentAdr(Adherent adh, String adrRue, int adrCP, String adrVille);
     
     public boolean modifierAdherentAdr(Adherent adh, String adrRue, int adrCP, String adrVille);
+    
+    public Adherent rechercherUnAdhId(Adherent adh);
+    
+    public boolean ifExist(Adherent adh);
 
 }

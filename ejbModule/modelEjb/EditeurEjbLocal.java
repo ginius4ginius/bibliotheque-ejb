@@ -38,5 +38,7 @@ public interface EditeurEjbLocal
     public List<Editeur> getEditeurFindAll();
     
     public boolean rechercherUnEditeur(Editeur editeur);
+    
+    public boolean ifExist(Editeur edit);
 
 }

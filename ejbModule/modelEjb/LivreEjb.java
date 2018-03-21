@@ -109,6 +109,19 @@ public class LivreEjb
 		return result;
 	}
     
+    
+    public Livre rechercheUnLivreId(Livre livre) {
+    	Livre livreResult = null;
+    		List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.isbn LIKE :num ")
+			.setParameter("num", livre.getIsbn()).getResultList();
+    	
+		if (liste.size() != 0) {
+			livreResult = liste.get(0);
+		}
+
+		return livreResult;
+	}
+    
     public List<Livre> getLivreFindAuteur(Auteur auteur) {
     	
     	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.auteur LIKE :num ")

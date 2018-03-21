@@ -112,6 +112,26 @@ public class AdherentEjb
     }
     
     
+    public Adherent rechercherUnAdhId(Adherent adh) {
+    	Adherent unAdh = null;
+    	TypedQuery<Adherent> query = em.createQuery("SELECT x FROM Adherent x WHERE x.nom LIKE :nom AND x.prenom LIKE :prenom", Adherent.class);
+    	List<Adherent> listeAdh = query.setParameter("nom", adh.getNom())
+    								.setParameter("prenom", adh.getPrenom()).getResultList();
+    	
+    	
+    	if((listeAdh.size() !=0)) {
+    		unAdh = listeAdh.get(0);
+    	}
+    	return unAdh;
+    }
+    
+    public boolean ifExist(Adherent adh) {
+    	if (rechercherAdherent(adh))
+    		return true;
+    	return false;
+    }
+    
+    
     
     /***
      * Fonction qui modifier l'adresse d'un ahérent utilisqnt UPDATE query
@@ -158,5 +178,7 @@ public class AdherentEjb
     	}	
 	    	return change;
     }
+    
+    
 
 }
