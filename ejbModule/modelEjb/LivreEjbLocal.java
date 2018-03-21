@@ -39,4 +39,5 @@ public interface LivreEjbLocal
     
     public boolean rechercheUnLivre(Livre l);
 
+    public boolean ifExist(Livre l);
 }

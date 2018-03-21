@@ -66,7 +66,10 @@ public class LivreEjb
      * @generated DT_ID=none
      */
     public Livre persistLivre(Livre livre) {
-        em.persist(livre);
+    	if(!ifExist(livre)){
+    		em.persist(livre);
+    	}
+        
         return livre;
     }
 
@@ -74,13 +77,18 @@ public class LivreEjb
      * @generated DT_ID=none
      */
     public Livre mergeLivre(Livre livre) {
+    	if(!ifExist(livre)){
         return em.merge(livre);
+    	}
+    	return livre;
+        
     }
 
     /**
      * @generated DT_ID=none
      */
     public void removeLivre(Livre livre) {
+    	
         livre = em.find(Livre.class, livre.getNum());
         em.remove(livre);
     }
@@ -135,6 +143,10 @@ public class LivreEjb
  	return liste;
  			
  }
+ 
+ public boolean ifExist(Livre l) {
+		return rechercheUnLivre(l);
+	}
     
 
 }

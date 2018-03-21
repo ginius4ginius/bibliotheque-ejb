@@ -38,5 +38,7 @@ public interface LivreEjbRemote
     public List<Livre> getLivreFindAll();
     
     public boolean rechercheUnLivre(Livre l);
+    
+    public boolean ifExist(Livre l);
 
 }

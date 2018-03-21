@@ -58,7 +58,10 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 	 * @generated DT_ID=none
 	 */
 	public Pret persistPret(Pret pret) {
-		em.persist(pret);
+		if(!ifExist(pret)) {
+			em.persist(pret);
+		}
+		
 		return pret;
 	}
 
@@ -66,7 +69,10 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 	 * @generated DT_ID=none
 	 */
 	public Pret mergePret(Pret pret) {
-		return em.merge(pret);
+		if(!ifExist(pret)) {
+			return em.merge(pret);
+		}
+		return pret;
 	}
 
 	/**
@@ -174,6 +180,10 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 	public List <Pret> listePretNomrendu(){
 		List<Pret> liste = em.createQuery("SELECT x.num, x.adherent.nom FROM Pret x WHERE x.dateRetourReelle = null x.dateRetourPrevue > CURRENT_DATE  ").getResultList();
 		return liste;
+	}
+	
+	public boolean ifExist(Pret p) {
+		return rechercheUnPret(p);
 	}
 
 }
