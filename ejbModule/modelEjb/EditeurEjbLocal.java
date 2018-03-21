@@ -40,5 +40,7 @@ public interface EditeurEjbLocal
     public boolean rechercherUnEditeur(Editeur editeur);
     
     public boolean ifExist(Editeur edit);
+    
+    public Editeur rechercherUnEditeurId(Editeur edit);
 
 }

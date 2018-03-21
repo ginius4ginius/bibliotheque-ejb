@@ -41,5 +41,7 @@ public interface AuteurEjbRemote
     public boolean rechercherUnAuteur(Auteur auteur);
     
     public boolean ifExist(Auteur auteur);
+    
+    public Auteur rechercherUnAuteurId(Auteur auteur);
 
 }

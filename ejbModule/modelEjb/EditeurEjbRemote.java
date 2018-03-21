@@ -41,4 +41,5 @@ public interface EditeurEjbRemote
     
     public boolean ifExist(Editeur edit);
 
+    public Editeur rechercherUnEditeurId(Editeur edit);
 }
