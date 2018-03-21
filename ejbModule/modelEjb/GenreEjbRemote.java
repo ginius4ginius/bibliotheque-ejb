@@ -42,5 +42,7 @@ public interface GenreEjbRemote
     
     public List<Livre> getAllLivreByGenre(Genre genre);
     
+    public Genre rechercheUnGenreId(Genre genre);
+    
 
 }

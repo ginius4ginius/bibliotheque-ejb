@@ -41,5 +41,7 @@ public interface GenreEjbLocal
     public boolean rechercheUnGenre(Genre genre);
     
     public List<Livre> getAllLivreByGenre(Genre genre);
+    
+    public Genre rechercheUnGenreId(Genre genre);
 
 }

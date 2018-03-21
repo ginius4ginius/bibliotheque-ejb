@@ -119,5 +119,19 @@ public class GenreEjb
 				.setParameter("genre", genre.getLibelle()).getResultList();
 		return liste;
     }
+    
+    public Genre rechercheUnGenreId(Genre genre) {
+    	Genre genreResult=null;
+    	
+		List<Genre> liste = em.createQuery("SELECT x FROM Genre x WHERE x.libelle LIKE :name")
+		.setParameter("name", genre.getLibelle()).getResultList();
+    	
+		if (liste.size()!=0) {
+			genreResult = liste.get(0);
+		}
+
+		return genreResult;
+
+	}
 
 }

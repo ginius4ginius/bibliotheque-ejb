@@ -12,11 +12,7 @@ import java.util.List;
 @Entity
 @NamedQuery(name="Livre.findAll", query="SELECT l FROM Livre l")
 public class Livre implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private int numAuteur;
-	private int numGenre;
-	private int numEditeur;
-	
+	private static final long serialVersionUID = 1L;	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -56,7 +52,7 @@ public class Livre implements Serializable {
 	
 	
 
-	public Livre(String isbn, String titre, String langue, float prix, int i, int NumAuteur, int NumGenre, int NumEditeur ) {
+	public Livre(String isbn, String titre, String langue, float prix, int i, Genre genre) {
 		super();
 		
 		
@@ -65,20 +61,7 @@ public class Livre implements Serializable {
 		this.langue = langue;
 		this.prix = prix;
 		this.titre = titre;
-<<<<<<< HEAD
-		this.numAuteur=NumAuteur;
-		auteur.setNum(numAuteur);
-		
-		this.numEditeur=NumEditeur;
-		editeur.setNum(numEditeur);
-		
-		this.numGenre=NumGenre;
-		genre.setNum(numGenre);
-=======
 		this.genre = genre;
-		this.auteur = auteur;
-		this.editeur = editeur;
->>>>>>> branch 'master' of https://github.com/ginius4ginius/bibliotheque-ejb.git
 	}
 
 
