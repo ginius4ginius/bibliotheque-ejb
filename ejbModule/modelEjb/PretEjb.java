@@ -189,4 +189,11 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 		return liste;
 	}
 
+	@Override
+	public boolean ifExist(Pret p) {
+		if (rechercheUnPret(p))
+			return true;
+		return false;
+	}
+
 }

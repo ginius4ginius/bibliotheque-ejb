@@ -54,10 +54,9 @@ public interface PretEjbLocal
     
     public List <Pret> listePretNomrendu();
     
-<<<<<<< HEAD
+
     public Pret rechercheUnPretId(Pret pret);
-=======
+
     public boolean ifExist(Pret p);
->>>>>>> branch 'master' of https://github.com/ginius4ginius/bibliotheque-ejb.git
 
 }

@@ -148,6 +148,15 @@ public class LivreEjb
  	return liste;
  			
  }
+
+
+
+@Override
+public boolean ifExist(Livre l) {
+	if (rechercheUnLivre(l))
+		return true;
+	return false;
+}
     
 
 }
