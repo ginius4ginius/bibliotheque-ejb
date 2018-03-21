@@ -188,6 +188,18 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 		List<Pret> liste = em.createQuery("SELECT x.num, x.adherent.nom FROM Pret x WHERE x.dateRetourReelle = null x.dateRetourPrevue > CURRENT_DATE  ").getResultList();
 		return liste;
 	}
+	
+	public Pret recherchePretId(Pret p) {
+		Pret unPret=null;
+		
+		List<Pret> pret= em.createQuery("SELECT x FROM Pret x WHERE x.num LIKE :num")
+				.setParameter("num", p.getNum()).getResultList();
+				
+				if((pret.size() !=0)) {
+		    		 unPret = pret.get(0);
+		    	}
+		    	return unPret;
+	}
 
 	@Override
 	public boolean ifExist(Pret p) {

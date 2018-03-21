@@ -58,5 +58,6 @@ public interface PretEjbLocal
     public Pret rechercheUnPretId(Pret pret);
 
     public boolean ifExist(Pret p);
+    
 
 }

@@ -55,5 +55,7 @@ public interface PretEjbRemote
     public List <Pret> listePretNomrendu();
     
     public boolean ifExist(Pret p);
+    
+    public Pret rechercheUnPretId(Pret pret);
 
 }

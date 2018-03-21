@@ -109,7 +109,7 @@ public class LivreEjb
 		return result;
 	}
     
-    
+       
     public Livre rechercheUnLivreId(Livre livre) {
     	Livre livreResult = null;
     		List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.isbn LIKE :num ")
