@@ -44,5 +44,7 @@ public interface GenreEjbRemote
     
     public Genre rechercheUnGenreId(Genre genre);
     
+    public boolean ifExist(Genre genre);
+    
 
 }

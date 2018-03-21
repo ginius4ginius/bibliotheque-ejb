@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import model.Adherent;
 import model.Genre;
 import model.Livre;
 
@@ -133,5 +134,11 @@ public class GenreEjb
 		return genreResult;
 
 	}
+    
+    public boolean ifExist(Genre genre) {
+    	if (rechercheUnGenre(genre))
+    		return true;
+    	return false;
+    }
 
 }
