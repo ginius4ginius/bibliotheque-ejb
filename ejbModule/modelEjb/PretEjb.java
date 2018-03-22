@@ -185,7 +185,7 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 	 * fonction qui retourne une liste de tous les prets non rendu après la date butoire.
 	 */
 	public List <Pret> listePretNomrendu(){
-		List<Pret> liste = em.createQuery("SELECT x.num, x.adherent.nom FROM Pret x WHERE x.dateRetourReelle = null x.dateRetourPrevue > CURRENT_DATE  ").getResultList();
+		List<Pret> liste = em.createQuery("SELECT x.num, x.adherent.nom FROM Pret x WHERE x.dateRetourReelle = null AND x.dateRetourPrevue > CURRENT_DATE").getResultList();
 		return liste;
 	}
 	
