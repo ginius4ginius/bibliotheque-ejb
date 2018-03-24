@@ -99,6 +99,19 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 		return result;
 		
 	}
+	
+	
+	public Pret rechercheUnPretId(Pret pret) {
+		Pret pretResult = null;
+		List<Pret> liste = em.createQuery("SELECT x FROM Pret x WHERE x.datePret LIKE :date")
+		.setParameter("date", pret.getDatePret()).getResultList();
+		if (liste.size()!=0 ) {
+			pretResult = liste.get(0);
+		}
+
+		return pretResult;
+		
+	}
 
 	/**
 	 * fonction permettant de voir si un livre est emprunté.
@@ -172,8 +185,27 @@ public class PretEjb implements PretEjbLocal, PretEjbRemote {
 	 * fonction qui retourne une liste de tous les prets non rendu après la date butoire.
 	 */
 	public List <Pret> listePretNomrendu(){
-		List<Pret> liste = em.createQuery("SELECT x.num, x.adherent.nom FROM Pret x WHERE x.dateRetourReelle = null x.dateRetourPrevue > CURRENT_DATE  ").getResultList();
+		List<Pret> liste = em.createQuery("SELECT x.num, x.adherent.nom FROM Pret x WHERE x.dateRetourReelle = null AND x.dateRetourPrevue > CURRENT_DATE").getResultList();
 		return liste;
+	}
+	
+	public Pret recherchePretId(Pret p) {
+		Pret unPret=null;
+		
+		List<Pret> pret= em.createQuery("SELECT x FROM Pret x WHERE x.num LIKE :num")
+				.setParameter("num", p.getNum()).getResultList();
+				
+				if((pret.size() !=0)) {
+		    		 unPret = pret.get(0);
+		    	}
+		    	return unPret;
+	}
+
+	@Override
+	public boolean ifExist(Pret p) {
+		if (rechercheUnPret(p))
+			return true;
+		return false;
 	}
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import model.Adherent;
 import model.Genre;
 import model.Livre;
 
@@ -118,6 +119,26 @@ public class GenreEjb
     	List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.genre.libelle LIKE :genre")
 				.setParameter("genre", genre.getLibelle()).getResultList();
 		return liste;
+    }
+    
+    public Genre rechercheUnGenreId(Genre genre) {
+    	Genre genreResult=null;
+    	
+		List<Genre> liste = em.createQuery("SELECT x FROM Genre x WHERE x.libelle LIKE :name")
+		.setParameter("name", genre.getLibelle()).getResultList();
+    	
+		if (liste.size()!=0) {
+			genreResult = liste.get(0);
+		}
+
+		return genreResult;
+
+	}
+    
+    public boolean ifExist(Genre genre) {
+    	if (rechercheUnGenre(genre))
+    		return true;
+    	return false;
     }
 
 }

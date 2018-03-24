@@ -2,6 +2,10 @@ package modelEjb;
 
 import java.util.List;
 import javax.ejb.Remote;
+
+import model.Auteur;
+import model.Editeur;
+import model.Genre;
 import model.Livre;
 
 
@@ -39,6 +43,14 @@ public interface LivreEjbRemote
     
     public boolean rechercheUnLivre(Livre l);
     
-    public void updateLivre(Livre l);
+    public Livre rechercheUnLivreId(Livre livre);
+    
+    public List<Livre> getLivreFindAuteur(Auteur auteur);
+    
+	public List<Livre> getLivreFindGenre(Genre genre);
+	
+	public List<Livre> getLivreFindEditeur(Editeur editeur);
+    
+    public boolean ifExist(Livre l);
 
 }

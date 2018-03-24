@@ -111,5 +111,27 @@ public class EditeurEjb
     	   	
     }
     
+    
+    public Editeur rechercherUnEditeurId(Editeur edit) {
+    	//auteur = em.find(Auteur.class, auteur.getNum());
+    	Editeur unEdit = null;
+    	TypedQuery<Editeur> query = em.createQuery("SELECT x FROM Editeur x WHERE x.nom LIKE :nom", Editeur.class);
+    	List<Editeur> listeEditeur = query.setParameter("nom", edit.getNom()).getResultList();
+    	
+
+    	if((listeEditeur.size() !=0)) {
+    		unEdit = listeEditeur.get(0);
+    	}
+    	return unEdit;
+    	   	
+    }
+    
+    public boolean ifExist(Editeur edit) {
+    	if (rechercherUnEditeur(edit))
+    		return true;
+    	return false;
+    }
+    
+    
 
 }

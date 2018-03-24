@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @NamedQuery(name="Livre.findAll", query="SELECT l FROM Livre l")
 public class Livre implements Serializable {
-	private static final long serialVersionUID = 1L;		
+	private static final long serialVersionUID = 1L;	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -50,15 +50,15 @@ public class Livre implements Serializable {
 	public Livre() {
 	}
 	
-	
-
-	public Livre(String isbn, String titre, String langue, float prix, int i) {
-		super();				
+	public Livre(String isbn, String titre, String langue, float prix, int i, Auteur auteur, Genre genre, Editeur editeur) {		
 		this.isbn = isbn;
 		this.titre = titre;
 		this.langue = langue;
 		this.prix = prix;
-		this.annee = i;
+		this.annee = i;		
+		this.auteur = auteur;
+		this.genre = genre;
+		this.editeur = editeur;
 	}
 
 

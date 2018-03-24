@@ -39,5 +39,9 @@ public interface AuteurEjbLocal
     public List<Auteur> getAuteurFindAll();
     
     public boolean rechercherUnAuteur(Auteur auteur);
+    
+    public boolean ifExist(Auteur auteur);
+    
+    public Auteur rechercherUnAuteurId(Auteur auteur);
 
 }

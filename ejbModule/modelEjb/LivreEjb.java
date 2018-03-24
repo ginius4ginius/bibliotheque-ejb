@@ -110,6 +110,19 @@ implements LivreEjbLocal, LivreEjbRemote
 		return result;
 	}
 
+
+	public Livre rechercheUnLivreId(Livre livre) {
+		Livre livreResult = null;
+		List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.isbn LIKE :num ")
+				.setParameter("num", livre.getIsbn()).getResultList();
+
+		if (liste.size() != 0) {
+			livreResult = liste.get(0);
+		}
+
+		return livreResult;
+	}
+
 	public List<Livre> getLivreFindAuteur(Auteur auteur) {
 
 		List<Livre> liste = em.createQuery("SELECT x FROM Livre x WHERE x.auteur LIKE :num ")
@@ -137,14 +150,12 @@ implements LivreEjbLocal, LivreEjbRemote
 
 	}
 
-	public void updateLivre(Livre l) {
-		TypedQuery<Livre> query = em.createQuery("UPDATE Livre l SET l.numAuteur = ?1, l.numGenre = ?2, l.numEditeur = ?3 WHERE x.isbn LIKE :num", Livre.class);
-		query.setParameter(1, l.getAuteur().getNum())
-			 .setParameter(2, l.getGenre().getNum())
-			 .setParameter(3, l.getEditeur().getNum())
-			 .setParameter("num",l.getIsbn());
-		
-		query.executeUpdate();	
+
+	@Override
+	public boolean ifExist(Livre l) {
+		if (rechercheUnLivre(l))
+			return true;
+		return false;
 	}
 
 }
